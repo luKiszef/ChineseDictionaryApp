@@ -3,11 +3,11 @@ package com.example.chinesedictionary2.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface ChineseCharacterApi {
-    @GET("character")
-    suspend fun getCharacter(@Query("char") character: String): List<CharacterResponse>
+    @GET("characters/{character}")
+    suspend fun getCharacter(@Path("character") character: String): List<CharacterResponse>
 
     companion object {
         private const val BASE_URL = "http://ccdb.hemiola.com/"
