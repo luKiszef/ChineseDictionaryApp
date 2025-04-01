@@ -1,7 +1,9 @@
 package com.example.chinesedictionary2.api
 
+import com.google.gson.annotations.SerializedName
+
 data class CharacterResponse(
-    val character: String,
-    val pinyin: String,
-    val meaning: String
+    @SerializedName("character") val character: String?,
+    @SerializedName("pinyin") val pinyin: String?,
+    @SerializedName("meaning") val meaning: String?
 )
