@@ -4,10 +4,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ChineseCharacterApi {
-    @GET("characters/{character}")
-    suspend fun getCharacter(@Path("character") character: String): List<CharacterResponse>
+    @GET("characters/string/{char}")
+    suspend fun getCharacterInfo(
+        @Path("char") character: String,
+        @Query("fields") fields: String = "kDefinition,kMandarin"
+    ): List<CharacterResponse>
 
     companion object {
         private const val BASE_URL = "http://ccdb.hemiola.com/"

@@ -39,17 +39,25 @@ class MainActivity : AppCompatActivity() {
     private fun searchCharacter(character: String) {
         lifecycleScope.launch {
             try {
-                val response = withContext(Dispatchers.IO) { api.getCharacter(character) }
+                val response = withContext(Dispatchers.IO) { api.getCharacterInfo(character) }
                 if (response.isNotEmpty()) {
                     val charData = response[0]
-                    val resultText = "Znak: ${charData.character}\nPinyin: ${charData.pinyin}\nZnaczenie: ${charData.meaning}"
+
+                    val cleanedPinyin = charData.pinyin?.replace(Regex("\\d"), "") ?: "Brak"
+
+                    val resultText = """
+                    
+                    Pinyin: $cleanedPinyin
+                    Znaczenia: ${charData.meaning ?: "Brak"}
+                """.trimIndent()
                     resultTextView.text = resultText
                 } else {
-                    resultTextView.text = "Brak wyników"
+                    resultTextView.text = "Brak wyników dla \"$character\""
                 }
             } catch (e: Exception) {
                 resultTextView.text = "Błąd: ${e.localizedMessage}"
             }
         }
     }
+
 }
