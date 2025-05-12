@@ -1,51 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/searchEditText"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text"
-        android:hint="Wpisz znak"
-        android:textSize="16sp" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Szukaj" />
+        <!-- Wyszukiwanie znaku -->
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Wpisz chiński znak" />
 
-    <TextView
-        android:id="@+id/resultTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Wyniki"
-        android:textSize="18sp" />
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Szukaj" />
 
-    <Button
-        android:id="@+id/favoriteButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dodaj do ulubionych" />
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wynik pojawi się tutaj"
+            android:paddingTop="8dp"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ulubione"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingTop="10dp"
-        android:gravity="center" />
+        <Button
+            android:id="@+id/favoriteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dodaj do ulubionych"
+            android:layout_marginTop="8dp" />
 
-    <ListView
-        android:id="@+id/favoritesListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp" />
-</LinearLayout>
+        <!-- Ulubione -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ulubione"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingTop="12dp" />
+
+        <ListView
+            android:id="@+id/favoritesListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            android:nestedScrollingEnabled="true" />
+
+        <!-- Tworzenie własnej listy -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stwórz własną listę"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingTop="16dp" />
+
+        <EditText
+            android:id="@+id/listNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nazwa listy" />
+
+        <EditText
+            android:id="@+id/listCharactersEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Znaki po przecinku (np. 好,学,文)" />
+
+        <Button
+            android:id="@+id/addToListButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dodaj do listy" />
+
+        <!-- Lista własnych list -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Twoje listy"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingTop="16dp" />
+
+        <ListView
+            android:id="@+id/customListsListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            android:nestedScrollingEnabled="true" />
+    </LinearLayout>
+</ScrollView>
